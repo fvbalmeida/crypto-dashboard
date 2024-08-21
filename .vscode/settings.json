@@ -4,6 +4,4 @@
   },
   "eslint.validate": ["javascript"],
   "typescript.tsdk": "node_modules\\typescript\\lib",
-  "cSpell.language": "en,pt-BR",
-  "cSpell.words": ["Cnpj"]
 }

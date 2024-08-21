@@ -22,52 +22,42 @@
   <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
   [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
 
-## Description
+## Descrição
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+Aplicação REST desenvolvida em NestJS para gerenciar o catálogo de criptomoedas de usuários e visualizar o preço delas em tempo real.
 
-## Installation
 
-```bash
-$ npm install
-```
-
-## Running the app
+## Rodando o app
 
 ```bash
-# development
-$ npm run start
+# iniciar o banco
+$ docker compose up -d
 
-# watch mode
+# rodar as migrations no banco de dados
+$ npm run migrations:run
+
+# iniciar a aplicação
 $ npm run start:dev
-
-# production mode
-$ npm run start:prod
 ```
 
-## Test
+## Detalhes da API
 
-```bash
-# unit tests
-$ npm run test
-
-# e2e tests
-$ npm run test:e2e
-
-# test coverage
-$ npm run test:cov
+Primeiramente é necessário  criar um usuário para que possa gerenciar o catálogo de criptomoedas: 
+```
+localhost:3000/register
 ```
 
-## Support
+Após isso, é necessário fazer login e copiar o access_token de retorno através da rota:
+```
+localhost:3000/auth/login
+```
 
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
+Depois é só adicionar criptomoedas ao catálogo do usuário, passando o symbol (BTC, ETH, etc) no corpo da requisição, através da rota:
+```
+localhost:3000/crypto
+```
 
-## Stay in touch
-
-- Author - [Kamil Myśliwiec](https://kamilmysliwiec.com)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
-
-## License
-
-Nest is [MIT licensed](LICENSE).
+E para visualizar o dashboard  do usuário, basta acessar a rota:
+```
+localhost:3000/dashboard
+```
